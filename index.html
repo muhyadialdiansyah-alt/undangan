@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="id">
 
@@ -424,4 +425,432 @@
     </script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Yadi & Dini</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --cream-accent: #FDF5E6;
+            /* Old Lace */
+            --gold-text: #C5A059;
+            --dark-text: #4A4A4A;
+            --font-main: 'Playfair Display', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* --- Dekorasi Sudut (Bunga/Kain) --- */
+        .decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-image: url('pngwing.com.png');
+            /* Ganti dengan PNG Bunga Transparan */
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+            transform: rotate(180deg);
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+
+        /* --- Cover Screen (Splash) --- */
+        #cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(253, 245, 230, 0.9)),
+                url('https://dummyimage.com/600x900/ccc/000&text=Foto+Cover');
+            /* Ganti Foto Cover */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            text-align: center;
+            padding: 20px;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+
+        .couple-names {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            color: var(--gold-text);
+            margin-bottom: 10px;
+        }
+
+        .wedding-date {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border-top: 1px solid var(--gold-text);
+            border-bottom: 1px solid var(--gold-text);
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        .guest-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .btn-open {
+            background-color: var(--gold-text);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-open:hover {
+            transform: scale(1.05);
+            background-color: #b08d4b;
+        }
+
+        /* --- Main Content --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        section {
+            min-height: 80vh;
+            /* Agar scroll terasa */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            /* Untuk animasi scroll */
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Halaman 1: Pembuka */
+        .hero-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 150px 150px 0 0;
+            border: 5px solid var(--cream-accent);
+            margin-bottom: 30px;
+        }
+
+        /* Halaman 2: Pasangan (Zig Zag Layout) */
+        .couple-profile {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        /* Mobile responsive: Stack kebawah */
+        @media (max-width: 768px) {
+            .couple-profile {
+                flex-direction: column !important;
+            }
+        }
+
+        .couple-profile:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--gold-text);
+            padding: 5px;
+        }
+
+        .profile-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .couple-profile:nth-child(even) .profile-text {
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .profile-text {
+                text-align: center !important;
+            }
+        }
+
+        .ig-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--gold-text);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .ig-btn i {
+            margin-right: 5px;
+        }
+
+        /* Halaman 3: Penutup */
+        .thank-you {
+            background-color: var(--cream-accent);
+            padding: 50px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animations Keyframes */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(197, 160, 89, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(197, 160, 89, 0);
+            }
+        }
+
+        /* Floating music button */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            display: none;
+            /* Muncul setelah buka undangan */
+        }
+
+        .music-spin {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="hindia.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <i class="fas fa-compact-disc fa-lg" style="color: var(--gold-text);"></i>
+    </div>
+
+    <div id="cover">
+        <div class="decoration top-left"></div>
+        <div class="decoration bottom-right"></div>
+
+        <h1 class="couple-names">Yadi & siapa</h1>
+        <p class="wedding-date">1 JUNI 2031</p>
+
+        <div class="guest-box">
+            <p style="font-size: 0.9rem;">Kepada Bapak/Ibu/Saudara/i</p>
+            <h3 id="guest-name" style="font-size: 1.5rem; margin: 10px 0;">Tamu Undangan</h3>
+            <p style="font-size: 0.8rem; font-style: italic;">Mohon maaf apabila ada kesalahan penulisan nama/gelar</p>
+        </div>
+
+        <button class="btn-open" onclick="openInvitation()">
+            <i class="fas fa-envelope-open"></i> Buka Undangan
+        </button>
+    </div>
+
+    <div class="container" id="main-content" style="display:none;">
+        <section class="reveal">
+            <div class="decoration top-left"></div>
+            <img src="https://dummyimage.com/500x700/eee/999&text=Foto+Utama+Pasangan" alt="Couple" class="hero-img">
+            <h2 style="font-family: var(--font-script); color: var(--gold-text); font-size: 2.5rem;">Assalamu’alaikum
+            </h2>
+            <p style="margin-top: 20px; line-height: 1.6;">
+                Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.
+                Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
+            </p>
+        </section>
+
+        <section class="reveal"
+            style="background-color: var(--cream-accent); width: 100vw; padding: 50px 20px; margin-left: calc(-50vw + 50%); border-radius: 50px 50px 0 0;">
+            <h2 style="font-family: var(--font-main); margin-bottom: 30px;">Mempelai</h2>
+
+            <div class="couple-profile">
+                <img src="https://dummyimage.com/300x300/4a90e2/fff&text=Foto+Yadi" alt="Yadi" class="profile-img">
+                <div class="profile-text">
+                    <h3 style="font-family: var(--font-script); font-size: 2rem;">Muh. Yadi Aldiansyah</h3>
+                    <p style="margin: 10px 0; font-style: italic;">"Menemukanmu adalah anugerah terindah yang Tuhan
+                        titipkan dalam hidupku."</p>
+                    <p>Putra dari Bpk. Fulan & Ibu Fulana</p>
+                    <a href="https://instagram.com/ydiii_ee" target="_blank" class="ig-btn">
+                        <i class="fab fa-instagram"></i> @yadiii_ee
+                    </a>
+                </div>
+            </div>
+
+            <div class="couple-profile">
+                <img src="https://dummyimage.com/300x300/e24a90/fff&text=Foto+siapa" alt="siapa" class="profile-img">
+                <div class="profile-text">
+                    <h3 style="font-family: var(--font-script); font-size: 2rem;">siapa</h3>
+                    <p style="margin: 10px 0; font-style: italic;">"Bersamamu, aku belajar bahwa cinta adalah kata kerja
+                        yang butuh diperjuangkan."</p>
+                    <p>Putri dari Bpk. Fulan & Ibu Fulana</p>
+                    <a href="https://instagram.com/usernamedini" target="_blank" class="ig-btn">
+                        <i class="fab fa-instagram"></i> @siapa
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <div class="thank-you">
+                <div class="decoration bottom-right"></div>
+                <h2
+                    style="font-family: var(--font-script); color: var(--gold-text); font-size: 2.5rem; margin-bottom: 20px;">
+                    Terima Kasih</h2>
+                <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk
+                    memberikan doa restu kepada kami.</p>
+                <br>
+                <p style="font-weight: bold;">Kami yang berbahagia,</p>
+                <h3 style="font-family: var(--font-main); margin-top: 10px;">Yadi & siapa</h3>
+                <br>
+                <small>Keluarga Besar Kedua Mempelai</small>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // 1. Ambil Nama Tamu dari URL ( ?to=Nama Tamu )
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('to');
+        if (guestName) {
+            document.getElementById('guest-name').innerText = guestName;
+        }
+
+        // 2. Fungsi Buka Undangan
+        function openInvitation() {
+            const cover = document.getElementById('cover');
+            const mainContent = document.getElementById('main-content');
+            const musicBtn = document.querySelector('.music-control');
+            const music = document.getElementById('bg-music');
+
+            // Animasi Cover hilang ke atas
+            cover.style.transform = 'translateY(-100vh)';
+
+            // Tampilkan konten
+            setTimeout(() => {
+                cover.style.display = 'none';
+                mainContent.style.display = 'block';
+                musicBtn.style.display = 'flex';
+
+                // Play Music (Autoplay biasanya diblokir browser kalau belum ada interaksi klik)
+                music.play();
+                musicBtn.classList.add('music-spin');
+            }, 500);
+        }
+
+        // 3. Kontrol Musik (Pause/Play)
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const btn = document.querySelector('.music-control');
+
+            if (music.paused) {
+                music.play();
+                btn.classList.add('music-spin');
+            } else {
+                music.pause();
+                btn.classList.remove('music-spin');
+            }
+        }
+
+        // 4. Animasi Scroll (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 }); // 10% elemen muncul, animasi jalan
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+>>>>>>> 376dcfbb82624d44f29c627dfdc7c2735201ad33
 </html>
